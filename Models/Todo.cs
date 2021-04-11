@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ToDoList.Models
 {
-    public partial class Task
+    public partial class Todo
     {
         public int TaskId { get; set; }
         public string TaskTitle { get; set; }

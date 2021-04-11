@@ -40,6 +40,7 @@ namespace ToDoList
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapDefaultControllerRoute();
             });
         }

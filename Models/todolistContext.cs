@@ -9,7 +9,7 @@ namespace ToDoList.Models
 {
     public partial class todolistContext : DbContext
     {
-        private IConfiguration Configuration = null;
+        private IConfiguration Configuration;
         public todolistContext()
         {
         }
@@ -19,7 +19,7 @@ namespace ToDoList.Models
         {
         }
 
-        public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<Todo> Todos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,9 +35,12 @@ namespace ToDoList.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "English_Philippines.1252");
 
-            modelBuilder.Entity<Task>(entity =>
+            modelBuilder.Entity<Todo>(entity =>
             {
-                entity.ToTable("tasks");
+                entity.HasKey(e => e.TaskId)
+                    .HasName("todo_pkey");
+
+                entity.ToTable("todo");
 
                 entity.Property(e => e.TaskId)
                     .HasColumnName("task_id")
