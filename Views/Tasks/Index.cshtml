@@ -1,11 +1,37 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<ToDoList.Models.Todo>
+@{
+}
+<!DOCTYPE html>
 <html>
 <head>
     <title>ToDoList</title>
+    <style>
+        .taskid{
+            display:none;
+        }
+    </style>
 </head>
 <body>
     <h1>To Do List!</h1>
+    <form method="post" action="/tasks/addtask">
+        <label for="title">Title: </label>
+        <input name="title" type="text" />
+        <label for="title_desc">Description: </label>
+        <input name="title_desc" type="text" />
+        <button type="submit">Add</button>
+    </form>
     <div>
-    </div>
+        @foreach (var n in Model)
+        {
+            <div class="entry">
+            <h2>@n.TaskTitle</h2>
+            <p>@n.TaskDetails</p>
+            <form method="post" action="/tasks/removetask">
+                <input class="taskid" type="number" name="taskID" value=@n.TaskId />
+                <button type="submit">Remove</button>
+            </form>
+            </div>
+        }
+</div>
 </body>
 </html>

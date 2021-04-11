@@ -32,7 +32,7 @@ namespace ToDoList
             services.AddControllersWithViews();
             // add logging feature later
         }
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DbContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage(); // remove later
             app.UseHttpsRedirection();
